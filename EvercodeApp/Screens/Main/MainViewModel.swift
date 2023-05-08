@@ -17,7 +17,12 @@ class MainViewModel {
     }
     
     func fetchItems() {
-        
-        // TODO
+        service.fetchData { result in
+                    if let items = result {
+                        delegate?.didFetchItems(items: items)
+                    } else {
+                        print("Failed to fetch items")
+            }
+        }
     }
 }
